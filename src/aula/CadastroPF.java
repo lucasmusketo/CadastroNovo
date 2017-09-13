@@ -7,11 +7,13 @@ import java.awt.GridLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.text.MaskFormatter;
 
 public class CadastroPF extends JFrame{
 	
@@ -24,8 +26,9 @@ public class CadastroPF extends JFrame{
 	JLabel  lblBairro   = new JLabel ("Bairro");
 	JTextField txtBairro = new JTextField();
 	
+	MaskFormatter formatCEP = null;
 	JLabel  lblCEP   = new JLabel ("CEP");
-	JTextField txtCEP = new JTextField();
+	JFormattedTextField txtCEP = null;
 	
 	JLabel  lblCid   = new JLabel ("Cidade");
 	JTextField txtCid = new JTextField();
@@ -33,20 +36,25 @@ public class CadastroPF extends JFrame{
 	JLabel  lblEst   = new JLabel ("Estado");
 	JTextField txtEst = new JTextField();
 	
-	JLabel  lblTel   = new JLabel ("Telefone");
-	JTextField txtTel = new JTextField();
 	
+	MaskFormatter formatTel = null;
+	JLabel  lblTel   = new JLabel ("Telefone");
+	JFormattedTextField txtTel = null;
+	
+	MaskFormatter formatCel = null;
 	JLabel  lblCel   = new JLabel ("Celular");
-	JTextField txtCel = new JTextField();
+	JFormattedTextField txtCel = null;
 	
 	JLabel  lblSex   = new JLabel ("Sexo");
 	JTextField txtSex = new JTextField();
 	
+	MaskFormatter formatRG = null;
 	JLabel  lblRg   = new JLabel ("RG");
-	JTextField txtRg = new JTextField();
+	JFormattedTextField txtRg = null;
 	
+	MaskFormatter formatCPF = null;
 	JLabel  lblCPF   = new JLabel ("CPF");
-	JTextField txtCPF = new JTextField();
+	JFormattedTextField txtCPF = null;
 	
 	JButton btnCAD = new JButton ("Cadastrar");
 	
@@ -78,6 +86,13 @@ public class CadastroPF extends JFrame{
 		 
 		 paine.add(lblCEP);
 		 lblCEP.setBounds(20,175,245,40);
+		 try {
+			 formatCEP = new MaskFormatter("#####-###");
+			 txtCEP = new JFormattedTextField(formatCEP);
+		 } catch (Exception ex){
+			 ex.printStackTrace();
+					 
+		 }
 		 paine.add(txtCEP);
 		 txtCEP.setBounds(80,180,150,25);
 		 
@@ -107,11 +122,28 @@ public class CadastroPF extends JFrame{
 		 
 		 paine.add(lblTel);
 		 lblTel.setBounds(20,325,245,40);
+		 
+		 try {
+			 formatTel = new MaskFormatter("(##)####-####");
+			 txtTel = new JFormattedTextField(formatTel);
+		 } catch (Exception ex){
+			 ex.printStackTrace();
+					 
+		 }
 		 paine.add(txtTel);
 		 txtTel.setBounds(80,330,150,25);
 		 
 		 paine.add(lblCel);
 		 lblCel.setBounds(20,375,245,40);
+		 
+		 try {
+			 formatCel = new MaskFormatter("(##)#####-####");
+			 txtCel = new JFormattedTextField(formatCel);
+		 } catch (Exception ex){
+			 ex.printStackTrace();
+					 
+		 }
+
 		 paine.add(txtCel);
 		 txtCel.setBounds(80,380,150,25);
 		 
@@ -131,11 +163,25 @@ public class CadastroPF extends JFrame{
 		 
 		 paine.add(lblRg);
 		 lblRg.setBounds(20,470,245,40);
+		 try {
+			 formatRG = new MaskFormatter("##.###.###-A");
+			 txtRg = new JFormattedTextField(formatRG);
+		 } catch (Exception ex){
+			 ex.printStackTrace();
+					 
+		 }
 		 paine.add(txtRg);
 		 txtRg.setBounds(80,475,150,25);
 		 
 		 paine.add(lblCPF);
 		 lblCPF.setBounds(20,520,245,40);
+		 try {
+			 formatCPF = new MaskFormatter("###.###.###.##");
+			 txtCPF = new JFormattedTextField(formatCPF);
+		 } catch (Exception ex){
+			 ex.printStackTrace();
+					 
+		 }
 		 paine.add(txtCPF);
 		 txtCPF.setBounds(80,525,150,25);
 		 
